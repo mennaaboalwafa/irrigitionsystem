@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1666540449481-1" author="menna.aboalwafa (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="hibernate_sequence" startValue="1"/>
+    </changeSet>
+    <changeSet id="1666540449481-2" author="menna.aboalwafa (generated)">
+        <createTable tableName="land">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_land"/>
+            </column>
+            <column name="land_area" type="BIGINT"/>
+            <column name="agricultural_crop" type="VARCHAR(255)"/>
+            <column name="land_location" type="VARCHAR(255)"/>
+            <column name="land_configuration_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1666540449481-3" author="menna.aboalwafa (generated)">
+        <createTable tableName="land_configuration">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_landconfiguration"/>
+            </column>
+            <column name="water_needed" type="BIGINT"/>
+            <column name="available_time_slots" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="soil_type" type="INTEGER"/>
+            <column name="temperature" type="FLOAT8"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1666540449481-4" author="menna.aboalwafa (generated)">
+        <addForeignKeyConstraint baseColumnNames="land_configuration_id" baseTableName="land"
+                                 constraintName="fk_land_on_landconfiguration" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="land_configuration"/>
+    </changeSet>
+
+</databaseChangeLog>
