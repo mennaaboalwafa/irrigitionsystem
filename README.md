@@ -14,7 +14,28 @@ maven to bulid the project : mvn clean install to bulid the project
 
 Spring JPA, liquibase and postgres for DB 
 
+spring.datasource.url=jdbc:postgresql://localhost:5432/irrigation
+spring.datasource.username=postgres
+spring.datasource.password=test
+
+
 spring kafka to call sensor device check if available
+
+Kafka Connection 
+
+application.kafka.bootstrap.server=localhost:9092
+
+application.kafka.sync.group.id=grp-sensor-device-tmp
+#consumer
+application.sensor-device.response.topic=sensor-device-response-internal
+
+#producer
+application.sensor-device.request.topic=sensor-device-request-internal
+
+for test use kadeck to mock resoponse produced from sensor device 
+
+TODO: In the future implemenet sensor device producer
+
 
 Swagger_UI
 Use http://localhost:8080/webjars/swagger-ui/index.html to list apis
